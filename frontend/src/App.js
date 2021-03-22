@@ -9,7 +9,7 @@ import React, { useEffect } from "react";
 
 function App() {
   useEffect(() => {
-    let ws = new WebSocket("ws://localhost:8080");
+    let ws = new WebSocket("ws://localhost:8080?myCustomID=2222");
     ws.onmessage = (message) => {
       alert(message.data);
       console.log(`Received: ${message.data}`);
