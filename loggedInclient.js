@@ -9,8 +9,14 @@ var connections = {};
 
 wss.on("connection",  (ws, req) => {
   const parameters = url.parse(req.url, true);
-  //ws.id = parameters.query.myCustomID;
+  //ws.id = parameters.query.myCustomID;]
+
+  //mapping websocket connection to client id
   ws.id = parameters.query.myCustomID;
+
+  //TODO:Websocket connection id is mapped to client Id.
+  //There the one with the latest websocket connection wins
+  //TODO:Create a linked list for connections[parameters.query.myCustomID] to hold multiple connections for a customer id
   connections[parameters.query.myCustomID] = ws;
 
   console.log(ws.id)
